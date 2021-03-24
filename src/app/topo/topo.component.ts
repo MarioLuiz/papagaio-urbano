@@ -1,8 +1,8 @@
 import { OfertasService } from './../ofertas.service';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { Oferta } from '../shared/oferta.model';
-
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators'
 
 @Component({
   selector: 'app-topo',
@@ -13,17 +13,37 @@ import { Oferta } from '../shared/oferta.model';
 export class TopoComponent implements OnInit {
 
   public ofertas: Observable<Oferta[]> | undefined
+  private subjectPesquisa: Subject<string> = new Subject<string>()
   constructor(private ofertasService: OfertasService) { }
 
   ngOnInit(): void {
+    this.ofertas = this.subjectPesquisa.pipe( //retorno Oferta[]
+      debounceTime(1000), // Executa a ação do switchMap após 1 segundo
+      distinctUntilChanged(), // previne pesquisa de termo identico ao termo anteriormente pesquisado
+      switchMap((termo: string) => {
+        console.log('requisição http para api')
+
+        if (termo.trim() === '') {
+          // retorna um observable de array de ofertas vazio
+          return of<Oferta[]>([])
+        }
+
+        return this.ofertasService.pesquisaOfertas(termo)
+      })
+    )
+    this.ofertas.subscribe((ofertas: Oferta[]) => console.log('ofertas', ofertas))
   }
 
   public pesquisa(termoDaPesquisa: string): void {
-    this.ofertas = this.ofertasService.pesquisaOfertas(termoDaPesquisa)
-    this.ofertas.subscribe(
-      (ofertas: Oferta[]) => console.log('ofertas', ofertas),
-      (erro: any) => console.log('Erro status: ', erro.status),
-      () => console.log('Fluxo de eventos completos')
-    )
+    console.log('keyup caractere', termoDaPesquisa)
+    this.subjectPesquisa.next(termoDaPesquisa)
+
+
+    /* this.ofertas = this.ofertasService.pesquisaOfertas(termoDaPesquisa)
+   this.ofertas.subscribe(
+     (ofertas: Oferta[]) => console.log('ofertas', ofertas),
+     (erro: any) => console.log('Erro status: ', erro.status),
+     () => console.log('Fluxo de eventos completos')
+   )*/
   }
 }
