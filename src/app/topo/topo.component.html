@@ -13,6 +13,10 @@
         #termoDaPesquisa
         (keyup)="pesquisa(termoDaPesquisa.value)"
         />
+        <ul class="list-group" style="position: absolute;">
+          <li class="list-group-item" 
+          *ngFor="let oferta of ofertasPesquisadas"> {{oferta.titulo}}</li>
+        </ul>
       </div>
       <div class="col-md-2">
         <a href="#"> <img src="/assets/carrinho.png" /> </a>

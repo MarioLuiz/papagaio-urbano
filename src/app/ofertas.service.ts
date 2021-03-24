@@ -50,7 +50,7 @@ export class OfertasService {
         return this.http.get(`${URL_API}/ofertas?descricao_oferta_like=${termo}`)
             .pipe(
                 map((resposta: any) => resposta),
-                retry(10)
+                retry(3)
                 //catchError((error : any) => throwError("Algo deu Errado"))
             )
     }
