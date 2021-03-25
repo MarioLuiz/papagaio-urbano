@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID, DEFAULT_CURRENCY_CODE } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
-import {ROUTES} from './app.routes';
+import { registerLocaleData } from '@angular/common'
+import localePt from '@angular/common/locales/pt'
+import { ROUTES } from './app.routes';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { OfertaComponent } from './oferta/oferta.component';
 import { ComoUsarComponent } from './oferta/como-usar/como-usar.component';
 import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
 
+registerLocaleData(localePt)
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,7 @@ import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
     DiversaoComponent,
     OfertaComponent,
     ComoUsarComponent,
-    OndeFicaComponent
+    OndeFicaComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,10 @@ import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
     AppRoutingModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
+    { provide: DEFAULT_CURRENCY_CODE, useValue: "BRL" }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
