@@ -18,6 +18,7 @@ import { ComoUsarComponent } from './oferta/como-usar/como-usar.component';
 import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
 
 registerLocaleData(localePt)
+
 @NgModule({
   declarations: [
     AppComponent,
