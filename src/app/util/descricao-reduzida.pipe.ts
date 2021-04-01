@@ -2,13 +2,14 @@ import { Pipe, PipeTransform } from '@angular/core'
 
 
 @Pipe({
-    name:'descricaoReduzida'
+    name: 'descricaoReduzida'
 })
 export class DescricaoReduzida implements PipeTransform {
 
-    transform(texto: string): string {
-        if( texto.length > 15) {
-            return texto.substr(0 , 15) + '...'
+    transform(texto: string, iniciarEm: number, truncarEm: number): string {
+
+        if (texto.length > truncarEm) {
+            return texto.substr(iniciarEm, truncarEm) + '...'
         }
 
         return texto
