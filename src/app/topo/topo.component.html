@@ -15,7 +15,7 @@
         />
         <ul class="list-group" style="position: absolute;">
           <li class="list-group-item" 
-          *ngFor="let oferta of ofertasPesquisadas"> {{oferta.titulo | descricaoReduzida:0:15}}</li>
+          *ngFor="let oferta of ofertas | async"> {{oferta.titulo | descricaoReduzida:0:15 | uppercase}}</li>
         </ul>
       </div>
       <div class="col-md-2">
