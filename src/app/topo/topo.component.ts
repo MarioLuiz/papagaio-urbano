@@ -55,4 +55,9 @@ export class TopoComponent implements OnInit {
      () => console.log('Fluxo de eventos completos')
    )*/
   }
+
+  public limpaPesquisa():void {
+    this.subjectPesquisa.next('')
+  }
+
 }
