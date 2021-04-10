@@ -5,9 +5,11 @@
             <h5>Sua Compra</h5>
             <hr />
 
-            <div class="form-row" style="background: #FAFAFA; padding: 20px; border-bottom: solid 1px #F0F0F0">
+            <div class="form-row"
+                 style="background: #FAFAFA; padding: 20px; border-bottom: solid 1px #F0F0F0">
                 <div class="form-group col-sm-1">
-                    <img src="/assets/ofertas/1/img1.jpg" class="img-fluid">
+                    <img src="/assets/ofertas/1/img1.jpg"
+                         class="img-fluid">
                 </div>
                 <div class="form-group col-sm-6">
                     Super Burger
@@ -17,8 +19,10 @@
                 <div>
                     <div class="row">
                         <div class="col">
-                            <button type="button" class="btn btn-link">-</button> 1
-                            <button type="button" class="btn btn-link">+</button>
+                            <button type="button"
+                                    class="btn btn-link">-</button> 1
+                            <button type="button"
+                                    class="btn btn-link">+</button>
                         </div>
                     </div>
                 </div>
@@ -28,9 +32,11 @@
                 </div>
             </div>
 
-            <div class="form-row" style="background: #FAFAFA; padding: 20px; border-bottom: solid 1px #F0F0F0">
+            <div class="form-row"
+                 style="background: #FAFAFA; padding: 20px; border-bottom: solid 1px #F0F0F0">
                 <div class="form-group col-sm-1">
-                    <img src="/assets/ofertas/4/img1.jpg" class="img-fluid">
+                    <img src="/assets/ofertas/4/img1.jpg"
+                         class="img-fluid">
                 </div>
                 <div class="form-group col-sm-6">
                     Estância das águas
@@ -40,8 +46,10 @@
                 <div>
                     <div class="row">
                         <div class="col">
-                            <button type="button" class="btn btn-link">-</button> 1
-                            <button type="button" class="btn btn-link">+</button>
+                            <button type="button"
+                                    class="btn btn-link">-</button> 1
+                            <button type="button"
+                                    class="btn btn-link">+</button>
                         </div>
                     </div>
                 </div>
@@ -66,9 +74,14 @@
 
                 <div class="form-group col-md-6">
                     <input type="text"
-                        class="form-control {{ enderecoEstadoPrimitivo ? '' : (enderecoValido ? 'is-valid' : 'is-invalid')}}"
-                        placeholder="Endereço" autocomplete="off" minlength="5" required [value]="endereco"
-                        #inputEndereco (input)="atualizaEndereco(inputEndereco.value)">
+                           class="form-control {{ enderecoEstadoPrimitivo ? '' : (enderecoValido ? 'is-valid' : 'is-invalid')}}"
+                           placeholder="Endereço"
+                           autocomplete="off"
+                           minlength="5"
+                           required
+                           [value]="endereco"
+                           #inputEndereco
+                           (input)="atualizaEndereco(inputEndereco.value)">
                     <div *ngIf="enderecoEstadoPrimitivo == false">
                         <div *ngIf="enderecoValido; else msgEnderecoinvalido">
                             <small class="form-text text-success">Ok</small>
@@ -81,9 +94,14 @@
 
                 <div class="form-group col-md-2">
                     <input type="text"
-                        class="form-control {{ numeroEstadoPrimitivo ? '' : (numeroValido ? 'is-valid' : 'is-invalid')}}"
-                        placeholder="Número" autocomplete="off" minlength="1" required [value]="numero" #inputNumero
-                        (input)="atualizaNumero(inputNumero.value)">
+                           class="form-control {{ numeroEstadoPrimitivo ? '' : (numeroValido ? 'is-valid' : 'is-invalid')}}"
+                           placeholder="Número"
+                           autocomplete="off"
+                           minlength="1"
+                           required
+                           [value]="numero"
+                           #inputNumero
+                           (input)="atualizaNumero(inputNumero.value)">
                     <div *ngIf="numeroEstadoPrimitivo == false">
                         <div *ngIf="numeroValido; else msgNumeroInvalido">
                             <small class="form-text text-success">Ok</small>
@@ -96,9 +114,12 @@
 
                 <div class="form-group col-md-4">
                     <input type="text"
-                        class="form-control {{ complementoEstadoPrimitivo ? '' : (complementoValido ? 'is-valid' : '')}}"
-                        placeholder="Complemento" autocomplete="off" [value]="complemento" #inputComplemento
-                        (input)="atualizaComplemento(inputComplemento.value)">
+                           class="form-control {{ complementoEstadoPrimitivo ? '' : (complementoValido ? 'is-valid' : '')}}"
+                           placeholder="Complemento"
+                           autocomplete="off"
+                           [value]="complemento"
+                           #inputComplemento
+                           (input)="atualizaComplemento(inputComplemento.value)">
                     <div *ngIf="complementoEstadoPrimitivo == false">
                         <div *ngIf="complementoValido">
                             <small class="form-text text-success">Ok</small>
@@ -115,13 +136,15 @@
             <div class="form-row">
 
                 <div class="form-group col-md-3">
-                    <select
-                        class="form-control {{ formaPagamentoEstadoPrimitivo ? '' : (formaPagamentoValido ? 'is-valid' : 'is-invalid')}}"
-                        #selectFormaPagamento (change)="atualizaFormaPagamento(selectFormaPagamento.value)">
+                    <select class="form-control {{ formaPagamentoEstadoPrimitivo ? '' : (formaPagamentoValido ? 'is-valid' : 'is-invalid')}}"
+                            #selectFormaPagamento
+                            (change)="atualizaFormaPagamento(selectFormaPagamento.value)">
                         <option value="">Selecione uma opção</option>
-                        <option value="dinheiro" selected="{{formaPagamento == 'dinheiro' ? 'selected' : ''}}">Dinheiro
+                        <option value="dinheiro"
+                                selected="{{formaPagamento == 'dinheiro' ? 'selected' : ''}}">Dinheiro
                         </option>
-                        <option value="debito" selected="{{formaPagamento == 'debito' ? 'selected' : ''}}">Débito
+                        <option value="debito"
+                                selected="{{formaPagamento == 'debito' ? 'selected' : ''}}">Débito
                         </option>
                     </select>
                     <div *ngIf="formaPagamentoEstadoPrimitivo == false">
@@ -136,7 +159,11 @@
             </div>
 
             <hr />
-            <button type="submit" class="btn btn-primary btn-lg" [disabled] = "formEstado">Cofirmar compra</button>
+            <button type="button"
+                    class="btn btn-primary btn-lg"
+                    [disabled]="formEstado"
+                    (click)="confirmarCompra()">Cofirmar compra
+            </button>
         </form>
     </div>
 </div>
