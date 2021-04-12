@@ -11,7 +11,8 @@ import { OrdemCompraService } from './../ordem-compra.service';
 export class OrdemCompraComponent implements OnInit {
 
   //Pedido
-  public pedido: Pedido = new Pedido('',0,'','');
+  public pedido: Pedido = new Pedido('', 0, '', '');
+  public idPedidoCompra: number | undefined;
 
   public endereco: string = '';
   public numero: string = '';
@@ -96,12 +97,14 @@ export class OrdemCompraComponent implements OnInit {
   }
 
   confirmarCompra(): void {
-
     this.pedido.endereco = this.endereco
     this.pedido.numero = Number.parseInt(this.numero)
     this.pedido.complemento = this.complemento
     this.pedido.formaPagamento = this.formaPagamento
 
-    this.ordemCompraService.efetiverCompra(this.pedido);
+    this.ordemCompraService.efetiverCompra(this.pedido)
+      .subscribe((idPedido: number) => {
+        this.idPedidoCompra = idPedido
+      })
   }
 }
