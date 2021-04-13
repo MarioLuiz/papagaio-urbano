@@ -3,8 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { registerLocaleData } from '@angular/common'
-import localePt from '@angular/common/locales/pt'
+import { FormsModule } from '@angular/forms';
 import { ROUTES } from './app.routes';
+import localePt from '@angular/common/locales/pt'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -43,6 +44,7 @@ registerLocaleData(localePt)
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    FormsModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [
