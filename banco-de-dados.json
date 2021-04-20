@@ -227,34 +227,6 @@
       "complemento": "Casa",
       "formaPagamento": "dinheiro",
       "id": 6
-    },
-    {
-      "endereco": "",
-      "numero": null,
-      "complemento": "",
-      "formaPagamento": "",
-      "id": 7
-    },
-    {
-      "endereco": "",
-      "numero": null,
-      "complemento": "",
-      "formaPagamento": "",
-      "id": 8
-    },
-    {
-      "endereco": "",
-      "numero": null,
-      "complemento": "",
-      "formaPagamento": "",
-      "id": 9
-    },
-    {
-      "endereco": "",
-      "numero": null,
-      "complemento": "",
-      "formaPagamento": "",
-      "id": 10
     }
   ]
 }
