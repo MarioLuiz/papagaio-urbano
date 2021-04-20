@@ -227,6 +227,27 @@
       "complemento": "Casa",
       "formaPagamento": "dinheiro",
       "id": 6
+    },
+    {
+      "endereco": "Rua Cassilda",
+      "numero": "1010",
+      "complemento": "Sobrado",
+      "formaPagamento": "dinheiro",
+      "id": 7
+    },
+    {
+      "endereco": "RUA LUCINDA",
+      "numero": "409",
+      "complemento": "Casa",
+      "formaPagamento": "dinheiro",
+      "id": 8
+    },
+    {
+      "endereco": "Rua Mr. linda",
+      "numero": "11",
+      "complemento": "Sobrado",
+      "formaPagamento": "debito",
+      "id": 9
     }
   ]
 }

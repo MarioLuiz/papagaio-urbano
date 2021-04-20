@@ -12,18 +12,9 @@ import { OrdemCompraService } from './../ordem-compra.service';
 export class OrdemCompraComponent implements OnInit {
 
   //Pedido
-  public pedido: Pedido = new Pedido('', 0, '', '');
   public idPedidoCompra: number | undefined;
 
-  @ViewChild('formulario')public formulario: NgForm | undefined;
-
-  public endereco: string = '';
-  public numero: string = '';
-  public complemento: string = '';
-  public formaPagamento: string = '';
-
-  //controlar botão confirmar Compra
-  public formEstado: string = 'disable';
+  @ViewChild('formulario') public formulario: NgForm | undefined;;
 
   constructor(private ordemCompraService: OrdemCompraService) { }
 
@@ -34,14 +25,19 @@ export class OrdemCompraComponent implements OnInit {
   confirmarCompra(): void {
 
     console.log('Formulario: ', this.formulario)
-    this.pedido.endereco = this.endereco
-    this.pedido.numero = Number.parseInt(this.numero)
-    this.pedido.complemento = this.complemento
-    this.pedido.formaPagamento = this.formaPagamento
+    if (this.formulario?.valid) {
+      let pedido: Pedido = new Pedido(
+        this.formulario?.value.endereco,
+        this.formulario?.value.numero,
+        this.formulario?.value.complemento,
+        this.formulario?.value.formaPagamento
+      );
 
-    this.ordemCompraService.efetiverCompra(this.pedido)
-      .subscribe((idPedido: number) => {
-        this.idPedidoCompra = idPedido
-      })
+      this.ordemCompraService.efetiverCompra(pedido)
+        .subscribe((idPedido: number) => {
+          this.idPedidoCompra = idPedido
+          console.log('Pedido cadastrado com sucesso, ID: ', idPedido)
+        })
+    }
   }
 }
