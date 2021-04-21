@@ -248,6 +248,20 @@
       "complemento": "Sobrado",
       "formaPagamento": "debito",
       "id": 9
+    },
+    {
+      "endereco": "Lucinda",
+      "numero": "409",
+      "complemento": "22",
+      "formaPagamento": "dinheiro",
+      "id": 10
+    },
+    {
+      "endereco": "Rua Luinda",
+      "numero": "409",
+      "complemento": "Casa",
+      "formaPagamento": "dinheiro",
+      "id": 11
     }
   ]
 }

@@ -18,6 +18,8 @@ export class OrdemCompraComponent implements OnInit {
     'formaPagamento': new FormControl(null, [Validators.required])
   });
 
+  public idPedidoCompra: number | undefined;
+
   constructor(private ordemCompraService: OrdemCompraService) { }
 
   ngOnInit() {
@@ -25,6 +27,23 @@ export class OrdemCompraComponent implements OnInit {
   }
 
   public confirmarCompra(): void {
-    console.log('FormGroup',this.formulario)
+    console.log('FormGroup', this.formulario)
+    if (this.formulario.status === 'INVALID') {
+      console.log('Formulário: ', this.formulario.status)
+      this.formulario.markAllAsTouched();
+    } else {
+      let pedido: Pedido = new Pedido(
+        this.formulario.value.endereco,
+        this.formulario.value.numero,
+        this.formulario.value.complemento,
+        this.formulario.value.formaPagamento);
+      console.log('Pedido : ', pedido)
+
+      this.ordemCompraService.efetiverCompra(pedido)
+      .subscribe((idPedido:number) => {
+        this.idPedidoCompra = idPedido;
+        console.log('idPedido : ', this.idPedidoCompra)
+      })
+    }
   }
 }
