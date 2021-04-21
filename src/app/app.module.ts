@@ -25,6 +25,7 @@ import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
 import { DescricaoReduzida } from './util/descricao-reduzida.pipe';
 import { OrdemCompraComponent } from './ordem-compra/ordem-compra.component';
 import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra-sucesso.component';
+import { CarrinhoService } from './carrinho.service';
 
 registerLocaleData(localePt)
 
@@ -53,7 +54,8 @@ registerLocaleData(localePt)
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt-BR' },
-    { provide: DEFAULT_CURRENCY_CODE, useValue: "BRL" }
+    { provide: DEFAULT_CURRENCY_CODE, useValue: "BRL" },
+    CarrinhoService
   ],
   bootstrap: [AppComponent]
 })

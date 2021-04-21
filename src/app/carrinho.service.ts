@@ -12,7 +12,7 @@ class CarrinhoService {
 
     public incluirItem(oferta: Oferta | undefined): void {
         console.log('Oferta recebida no servico carrinho: ', oferta)
-        let itemCarrinho:ItemCarrinho = new ItemCarrinho(
+        let itemCarrinho: ItemCarrinho = new ItemCarrinho(
             oferta?.id,
             oferta?.imagens[0],
             oferta?.titulo,
@@ -20,8 +20,9 @@ class CarrinhoService {
             oferta?.valor,
             1
         )
+        this.itens.push(itemCarrinho)
         console.log('itemCarrinho: ', itemCarrinho)
     }
 }
 
-export default CarrinhoService
+export { CarrinhoService }
