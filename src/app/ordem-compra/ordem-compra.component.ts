@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { OrdemCompraService } from '../ordem-compra.service'
 import { Pedido } from '../shared/pedido.model'
 
@@ -12,10 +12,10 @@ import { Pedido } from '../shared/pedido.model'
 export class OrdemCompraComponent implements OnInit {
 
   public formulario: FormGroup = new FormGroup({
-    'endereco': new FormControl(null),
-    'numero': new FormControl(null),
+    'endereco': new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(120)]),
+    'numero': new FormControl(null, [Validators.required, Validators.minLength(1), Validators.maxLength(20)]),
     'complemento': new FormControl(null),
-    'formaPagamento': new FormControl(null)
+    'formaPagamento': new FormControl(null, [Validators.required])
   });
 
   constructor(private ordemCompraService: OrdemCompraService) { }
@@ -25,5 +25,6 @@ export class OrdemCompraComponent implements OnInit {
   }
 
   public confirmarCompra(): void {
+    console.log('FormGroup',this.formulario)
   }
 }
