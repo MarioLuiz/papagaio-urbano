@@ -10,8 +10,8 @@ class CarrinhoService {
         return this.itens
     }
 
-    public incluirItem(oferta: Oferta | undefined): void {
-        console.log('Oferta recebida no servico carrinho: ', oferta)
+    public incluirItem(oferta: Oferta): void {
+        //console.log('Oferta recebida no servico carrinho: ', oferta)
         let itemCarrinho: ItemCarrinho = new ItemCarrinho(
             oferta?.id,
             oferta?.imagens[0].url,
@@ -20,8 +20,16 @@ class CarrinhoService {
             oferta?.valor,
             1
         )
-        this.itens.push(itemCarrinho)
-        console.log('itemCarrinho: ', itemCarrinho)
+
+        // verificar se o item em questão já não existe dentro de this.itens
+        let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => item.id === itemCarrinho.id)
+        
+        if (itemCarrinhoEncontrado) {
+            (itemCarrinhoEncontrado.quantidade) ? itemCarrinhoEncontrado.quantidade += 1 : undefined
+        } else {
+            this.itens.push(itemCarrinho)
+        }
+        //console.log('itemCarrinho: ', itemCarrinho)
     }
 }
 

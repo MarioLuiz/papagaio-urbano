@@ -13,7 +13,7 @@ import { CarrinhoService } from '../carrinho.service';
 })
 export class OfertaComponent implements OnInit, OnDestroy {
 
-  public oferta: Oferta | undefined = undefined
+  public oferta!: Oferta;
 
   constructor(
     private route: ActivatedRoute,
