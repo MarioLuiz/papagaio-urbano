@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CarrinhoService } from '../carrinho.service';
 import { OrdemCompraService } from '../ordem-compra.service'
+import { ItemCarrinho } from '../shared/item-carrinho.model';
 import { Pedido } from '../shared/pedido.model'
 
 @Component({
@@ -12,6 +13,9 @@ import { Pedido } from '../shared/pedido.model'
 })
 export class OrdemCompraComponent implements OnInit {
 
+  public idPedidoCompra: number | undefined;
+  public itensCarrinho: ItemCarrinho[] = [];
+
   public formulario: FormGroup = new FormGroup({
     'endereco': new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(120)]),
     'numero': new FormControl(null, [Validators.required, Validators.minLength(1), Validators.maxLength(20)]),
@@ -19,15 +23,14 @@ export class OrdemCompraComponent implements OnInit {
     'formaPagamento': new FormControl(null, [Validators.required])
   });
 
-  public idPedidoCompra: number | undefined;
-
   constructor(
     private ordemCompraService: OrdemCompraService,
     private carrinhoService: CarrinhoService
   ) { }
 
   ngOnInit() {
-    console.log('Itens do carrinho: ', this.carrinhoService.exibirItens())
+    this.itensCarrinho = this.carrinhoService.exibirItens();
+    console.log('Itens do carrinho: ', this.itensCarrinho);
   }
 
   public confirmarCompra(): void {
@@ -48,6 +51,12 @@ export class OrdemCompraComponent implements OnInit {
           this.idPedidoCompra = idPedido;
           console.log('idPedido : ', this.idPedidoCompra)
         })
+    }
+  }
+
+  public calculaValorItemCarrinho(item: ItemCarrinho): any {
+    if (item.quantidade && item.valor) {
+      return item.quantidade * item.valor
     }
   }
 }

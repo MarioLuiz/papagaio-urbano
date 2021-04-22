@@ -14,7 +14,7 @@ class CarrinhoService {
         console.log('Oferta recebida no servico carrinho: ', oferta)
         let itemCarrinho: ItemCarrinho = new ItemCarrinho(
             oferta?.id,
-            oferta?.imagens[0],
+            oferta?.imagens[0].url,
             oferta?.titulo,
             oferta?.descricao_oferta,
             oferta?.valor,
