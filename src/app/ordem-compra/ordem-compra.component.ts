@@ -59,4 +59,12 @@ export class OrdemCompraComponent implements OnInit {
       return item.quantidade * item.valor
     }
   }
+
+  public adicionar(item: ItemCarrinho): void {
+    this.carrinhoService.adicionarQuantidade(item)
+  }
+
+  public diminuir(item: ItemCarrinho): void {
+    this.carrinhoService.removerQuantidade(item)
+  }
 }

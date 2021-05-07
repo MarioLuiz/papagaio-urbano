@@ -23,7 +23,7 @@ class CarrinhoService {
 
         // verificar se o item em questão já não existe dentro de this.itens
         let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => item.id === itemCarrinho.id)
-        
+
         if (itemCarrinhoEncontrado) {
             (itemCarrinhoEncontrado.quantidade) ? itemCarrinhoEncontrado.quantidade += 1 : undefined
         } else {
@@ -34,12 +34,29 @@ class CarrinhoService {
 
     public totalCarrinhoCompras(): number {
         let total: number = 0
-
         this.itens.map((item: ItemCarrinho) => {
             total += (item.valor * item.quantidade)
         })
-
         return total
+    }
+
+    public adicionarQuantidade(itemCarrinho: ItemCarrinho): void {
+        //Incrementar quantidade
+        let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => item.id === itemCarrinho.id)
+
+        if (itemCarrinhoEncontrado) {
+            itemCarrinhoEncontrado.quantidade += 1
+        }
+    }
+
+    public removerQuantidade(itemCarrinho: ItemCarrinho): void {
+        let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => item.id === itemCarrinho.id)
+        //Decrementar quantidade
+        if (itemCarrinhoEncontrado) {
+            if (itemCarrinhoEncontrado.quantidade > 0){
+                itemCarrinhoEncontrado.quantidade -= 1
+            }
+        }
     }
 }
 
