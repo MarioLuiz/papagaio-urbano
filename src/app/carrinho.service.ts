@@ -53,8 +53,9 @@ class CarrinhoService {
         let itemCarrinhoEncontrado = this.itens.find((item: ItemCarrinho) => item.id === itemCarrinho.id)
         //Decrementar quantidade
         if (itemCarrinhoEncontrado) {
-            if (itemCarrinhoEncontrado.quantidade > 0){
-                itemCarrinhoEncontrado.quantidade -= 1
+            itemCarrinhoEncontrado.quantidade -= 1
+            if (itemCarrinhoEncontrado.quantidade === 0) {
+                this.itens.splice(this.itens.indexOf(itemCarrinhoEncontrado), 1)
             }
         }
     }
