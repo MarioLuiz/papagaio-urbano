@@ -43,18 +43,19 @@ export class OrdemCompraComponent implements OnInit {
         alert('Você não possui nenhum item!')
         return
       }
-      
+
       let pedido: Pedido = new Pedido(
         this.formulario.value.endereco,
         this.formulario.value.numero,
         this.formulario.value.complemento,
-        this.formulario.value.formaPagamento);
-      console.log('Pedido : ', pedido)
+        this.formulario.value.formaPagamento,
+        this.carrinhoService.exibirItens())
+      //console.log('Pedido : ', pedido)
 
       this.ordemCompraService.efetiverCompra(pedido)
         .subscribe((idPedido: number) => {
           this.idPedidoCompra = idPedido;
-          console.log('idPedido : ', this.idPedidoCompra)
+          //console.log('idPedido : ', this.idPedidoCompra)
         })
     }
   }
