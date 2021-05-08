@@ -328,6 +328,56 @@
         }
       ],
       "id": 13
+    },
+    {
+      "endereco": "Casa 1",
+      "numero": "409",
+      "complemento": null,
+      "formaPagamento": "dinheiro",
+      "itens": [
+        {
+          "id": 1,
+          "img": "/assets/ofertas/1/img1.jpg",
+          "titulo": "Super Burger",
+          "descricao_oferta": "Rodízio de Mini-hambúrger com opção de entrada.",
+          "valor": 29.9,
+          "quantidade": 2
+        }
+      ],
+      "id": 14
+    },
+    {
+      "endereco": "Claudio gerulio",
+      "numero": "789",
+      "complemento": "11",
+      "formaPagamento": "debito",
+      "itens": [
+        {
+          "id": 1,
+          "img": "/assets/ofertas/1/img1.jpg",
+          "titulo": "Super Burger",
+          "descricao_oferta": "Rodízio de Mini-hambúrger com opção de entrada.",
+          "valor": 29.9,
+          "quantidade": 2
+        },
+        {
+          "id": 2,
+          "img": "/assets/ofertas/2/img1.jpg",
+          "titulo": "Cozinha Mexicana",
+          "descricao_oferta": "Almoço ou Jantar com Rodízio Mexicano delicioso.",
+          "valor": 32.9,
+          "quantidade": 1
+        },
+        {
+          "id": 3,
+          "img": "/assets/ofertas/3/img1.jpg",
+          "titulo": "Pizzas Grandes",
+          "descricao_oferta": "Pizza Grande, Mussarela, Marguerita ou outras!",
+          "valor": 21.9,
+          "quantidade": 2
+        }
+      ],
+      "id": 15
     }
   ]
 }
