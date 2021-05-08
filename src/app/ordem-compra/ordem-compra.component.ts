@@ -34,11 +34,16 @@ export class OrdemCompraComponent implements OnInit {
   }
 
   public confirmarCompra(): void {
-    console.log('FormGroup', this.formulario)
     if (this.formulario.status === 'INVALID') {
       console.log('Formulário: ', this.formulario.status)
       this.formulario.markAllAsTouched();
     } else {
+
+      if (this.carrinhoService.exibirItens().length === 0) {
+        alert('Você não possui nenhum item!')
+        return
+      }
+      
       let pedido: Pedido = new Pedido(
         this.formulario.value.endereco,
         this.formulario.value.numero,
